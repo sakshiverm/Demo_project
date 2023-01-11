@@ -1,0 +1,9 @@
+<h1> all post </h1>
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+            <%= post.caption %>
+        </li>    
+    <% end %>    
+</ul>
+<%= link_to "Upload New Post",new_post_path %>
