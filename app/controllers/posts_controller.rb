@@ -1,25 +1,38 @@
 class PostsController < ApplicationController
   def index
     @posts=Post.all
-    if session[:user_id]
-      @user=User.find_by(id:session[:user_id])
-    end 
   end
   def show
     @post=Post.find(params[:id])
   end 
   def new
-    @post=Post.new    
+    @post=Post.new   
   end  
   def create
-    @user=User.first
-    @post=@user.posts.create(post_params)
+    @post=Post.new(post_params)
     if @post.save
       redirect_to @post
-    end  
+    else
+      render :new,status: :unprocessable_entity
+    end
   end 
-
-
+  def edit
+    @post=Post.find(params[:id])
+  end  
+  def update
+    @post=Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render :edit,status: :unprocessable_entity
+    end
+  end  
+  def destroy
+    @post=post.find(params[:id])
+    @post.destroy
+    redirect_to root_path,status: :see_other
+  end
+  private
   def post_params
     params.require(:post).permit(:caption,:author_user)
   end  

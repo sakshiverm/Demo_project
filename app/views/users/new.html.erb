@@ -1,23 +1,13 @@
-<h1> sign up </h1>
-<%= form_with model: @user do |form| %>
-    <div>
-        <%= form.label :first_name %><br>
-        <%= form.text_field :first_name%>
-    </div>
-    <div>
-        <%= form.label :last_name %><br>
-        <%= form.text_field :last_name %>
-    </div>
-    <div>
-        <%= form.label :email %><br>
-        <%= form.email_field :email %>
-    </div>
-    <div>
-        <%= form.label :password %><br>
-        <%= form.password_field :password %>
-    </div>
-    <div>
-        <br>
-        <%= form.submit %>
-    </div>
-<% end %>    
+<h1>Users Register</h1>
+
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="user[email]" value="<%= @user.email %>" />
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="user[password]" />
+
+  <input type="submit" value="register">
+</form>
