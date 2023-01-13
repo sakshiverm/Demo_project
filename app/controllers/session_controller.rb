@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
   def new
-      @user=User.new
+      @user = User.new
   end
   def create
       @user = User.find_by(email: user_params[:email])
@@ -18,7 +18,7 @@ class SessionController < ApplicationController
    end 
    private
    def user_params
-      params.require(:user).permit(:email,:password)  
+      params.require(:user).permit(:email, :password)  
    end   
 
   

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "posts#index"
+  #root "posts#index"
+  root "session#new"
   #get 'session/new'
   #get 'session/create'
   #get 'session/destroy'

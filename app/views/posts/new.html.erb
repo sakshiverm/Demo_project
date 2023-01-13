@@ -1,11 +1,2 @@
 <h1>Add Post</h1>
-<%= form_with model: @post do |form| %>
-    <div>
-        <%= form.label :caption %><br>
-        <%= form.text_field :caption%>
-    </div>
-    <div>
-        <br>
-        <%= form.submit %>
-    </div>
-<% end %>    
+<%= render "form", post: @post %>

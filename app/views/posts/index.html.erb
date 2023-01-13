@@ -1,9 +1,10 @@
-<h1> all post </h1>
+<h1> All post </h1>
 <ul>
     <% @posts.each do |post| %>
         <li>
-            <%= post.caption %>
+            <%=link_to post.caption,post %>
         </li>    
     <% end %>    
 </ul>
-<%= link_to "Upload New Post",new_post_path %>
+<%= link_to "Upload New Post",new_post_path %><br>
+<%= link_to "sign out",sign_out_path %>
