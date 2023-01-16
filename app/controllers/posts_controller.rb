@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts=Post.all
-    if session[:user_id]
-      @user=User.find_by(id:session[:user_id])
-    end  
+    @posts=current_user.posts
   end 
   def show
     @post=Post.find(params[:id])
